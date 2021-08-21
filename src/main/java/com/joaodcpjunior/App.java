@@ -13,9 +13,9 @@ public class App {
 		
 		movies.addAll(worstMovies.findTenWorstMovies("https://www.imdb.com/chart/bottom"));
 		
-		worstMovies.setMovieName(movies);
+		//worstMovies.setMovieName(movies);
 		
-		worstMovies.setMovieRating(movies);
+		//worstMovies.setMovieRating(movies);
 		
 		System.out.println(movies);
 	}
