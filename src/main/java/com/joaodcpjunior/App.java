@@ -15,7 +15,7 @@ public class App {
 		
 		worstMovies.setMovieName(movies);
 		
-		//worstMovies.setMovieRating(movies);
+		worstMovies.setMovieRating(movies);
 		
 		System.out.println(movies);
 	}
