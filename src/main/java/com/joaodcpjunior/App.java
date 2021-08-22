@@ -13,9 +13,13 @@ public class App {
 		
 		movies.addAll(worstMovies.findTenWorstMovies("https://www.imdb.com/chart/bottom"));
 		
+		worstMovies.setIMDbMovieID(movies, "https://www.imdb.com/chart/bottom");
+		
 		worstMovies.setMovieName(movies);
 		
 		worstMovies.setMovieRating(movies);
+		
+		worstMovies.setMovieDirectors(movies);
 		
 		System.out.println(movies);
 	}
