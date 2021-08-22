@@ -21,6 +21,8 @@ public class App {
 		
 		worstMovies.setMovieDirectors(movies);
 		
+		worstMovies.setMovieStars(movies);
+		
 		System.out.println(movies);
 	}
 }

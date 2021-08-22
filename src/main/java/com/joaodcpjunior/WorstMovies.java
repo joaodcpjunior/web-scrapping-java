@@ -133,5 +133,33 @@ public class WorstMovies {
 			
 		}
 	}
+	
+	public void setMovieStars(List<Movie> tenWorstMovies) throws IOException {
+		
+		for (int i = 0; i < 10; i++) {
+			
+			String movieLink = tenWorstMovies.get(i).getMovieLink();
+			
+			String conectLink = ("https://www.imdb.com/" + movieLink);
+			
+			Document doc = Jsoup.connect(conectLink).get();
+			
+			Element ul = doc.getElementsByClass("ipc-inline-list ipc-inline-list--show-dividers ipc-inline-list--inline ipc-metadata-list-item__list-content baseAlt").get(2);
+			
+			Elements lis = ul.getElementsByTag("li");
+			
+			List<String> stars = new ArrayList<>();
+						
+			for (Element li : lis) {
+				
+				String star = li.getElementsByClass("ipc-metadata-list-item__list-content-item ipc-metadata-list-item__list-content-item--link").first().text();
+								
+				stars.add(li.elementSiblingIndex(), star);			
+			}
+			
+			tenWorstMovies.get(i).setStars(stars);
+			
+		}
+	}
 
 }
