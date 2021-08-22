@@ -17,11 +17,13 @@ public class App {
 		
 		worstMovies.setMovieName(movies);
 		
-		worstMovies.setMovieRating(movies);
+		worstMovies.setMovieRating(movies, "https://www.imdb.com/chart/bottom");
 		
 		worstMovies.setMovieDirectors(movies);
 		
 		worstMovies.setMovieStars(movies);
+		
+		worstMovies.setMovieComment(movies);
 		
 		System.out.println(movies);
 	}

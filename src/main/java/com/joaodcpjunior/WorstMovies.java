@@ -89,20 +89,27 @@ public class WorstMovies {
 		}
 	}
 	
-	public void setMovieRating(List<Movie> tenWorstMovies) throws IOException {
+	public void setMovieRating(List<Movie> tenWorstMovies, String url) throws IOException {
 		
+		Document doc = Jsoup.connect(url).get();
+
+		Element tbody = doc.getElementsByTag("tbody").first();
+
 		for (int i = 0; i < 10; i++) {
-			
-			String movieLink = tenWorstMovies.get(i).getMovieLink();
-			
-			String conectLink = ("https://www.imdb.com/" + movieLink);
-			
-			Document doc = Jsoup.connect(conectLink).get();
-			
-			Element rating = doc.getElementsByClass("AggregateRatingButton__RatingScore-sc-1ll29m0-1 iTLWoV").first();
-			
-			tenWorstMovies.get(i).setRating(rating.text());
-			
+
+			Element tr = tbody.getElementsByTag("tr").get(i);
+
+			Element td = tr.getElementsByTag("td").get(2);
+
+			Elements ratings = td.getElementsByAttribute("title");
+
+			for (Element rating : ratings) {
+				
+				String movieRating = rating.text();
+
+				tenWorstMovies.get(i).setRating(movieRating);
+			}
+				
 		}
 	}
 	
@@ -158,6 +165,23 @@ public class WorstMovies {
 			}
 			
 			tenWorstMovies.get(i).setStars(stars);
+			
+		}
+	}
+	
+	public void setMovieComment(List<Movie> tenWorstMovies) throws IOException {
+		
+		for (int i = 0; i < 10; i++) {
+			
+			String IMDbMovieID = tenWorstMovies.get(i).getIMDbMovieID();
+			
+			String conectLink = ("https://www.imdb.com/title/" + IMDbMovieID + "/reviews?sort=helpfulnessScore&dir=desc&ratingFilter=5");
+			
+			Document doc = Jsoup.connect(conectLink).get();
+			
+			Element comment = doc.getElementsByClass("text show-more__control").first();
+			
+			tenWorstMovies.get(i).setComment(comment.text());
 			
 		}
 	}
