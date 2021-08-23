@@ -25,6 +25,8 @@ public class App {
 		
 		worstMovies.setMovieComment(movies);
 		
-		System.out.println(movies);
+		worstMovies.printTopTenMovies(movies);
+		
+		//System.out.println(movies);
 	}
 }

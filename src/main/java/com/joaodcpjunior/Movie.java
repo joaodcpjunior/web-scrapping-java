@@ -74,14 +74,12 @@ public class Movie {
 
 	@Override
 	public String toString() {
-		return "\nMovie: {"
-				+"\n	movieLink = " + movieLink + ","
-				+"\n	IMDbMovieID = " + IMDbMovieID + ","
-				+"\n	name = " + name + ","
-				+"\n	rating = "+ rating + ","
-				+"\n	directors = "+ directors + ","
-				+"\n	stars = " + stars + ","
-				+"\n	comment = " + comment + ","
+		return "\n{"
+				+"\n	Nome: " + name.replaceAll("Original title: ", "") + ";"
+				+"\n	Nota (IMDb): "+ rating + ";"
+				+"\n	Diretores: "+ directors.toString().replace("[", "").replace("]", "") + ";"
+				+"\n	Elenco Principal: " + stars.toString().replace("[", "").replace("]", "") + ";"
+				+"\n	Comentário: " + comment
 				+"\n}";
 	}
 

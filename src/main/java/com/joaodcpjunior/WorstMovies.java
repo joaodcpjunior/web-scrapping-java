@@ -185,5 +185,12 @@ public class WorstMovies {
 			
 		}
 	}
+	
+	public void printTopTenMovies(List<Movie> tenWorstMovies) {
+		
+		for (int i = 9; i >= 0; i--) {
+			System.out.println(tenWorstMovies.get(i));
+		}
+	}
 
 }
